@@ -108,7 +108,6 @@ CREATE TABLE Bookings (
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     host_id INT NOT NULL,
-    host_id INT NOT NULL,
     booking_date DATE NOT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
