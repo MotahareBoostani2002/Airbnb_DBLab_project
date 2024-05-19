@@ -12,7 +12,7 @@ CREATE TABLE Properties (
     max_guests INT NOT NULL,
     area DECIMAL(4) NOT NULL,
     price_per_night DECIMAL(4) NOT NULL,
-    availability BOOLEAN NOT NULL,
+    availability BIT NOT NULL,
     FOREIGN KEY (host_id) REFERENCES Hosts(host_id),
     FOREIGN KEY (location_id) REFERENCES Locations(location_id)
 );
@@ -27,7 +27,7 @@ CREATE TABLE Hosts (
     host_since DATE NOT NULL,
     host_response_time VARCHAR(50) NOT NULL check(host_response_time in ('within an hour', 'within a few hours', 'within a day', 'a few days or more')),
     host_rate DECIMAL(2, 1) NOT NULL check (host_rate between 0 and 5),
-    host_identity_verified BOOLEAN NOT NULL
+    host_identity_verified BIT NOT NULL
 );
 
 
