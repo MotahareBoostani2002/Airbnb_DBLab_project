@@ -264,7 +264,6 @@ CREATE TABLE Bookings (
 
 -- insert into bookings table
 INSERT INTO Bookings (booking_id, user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
-INSERT INTO Bookings (booking_id, user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
 VALUES
 (1, 1, 1, 1    , '2020-02-01', '2020-02-01', '2020-02-05', 5, 0000),
 (2, 2, 2, 3    , '2020-04-01', '2020-04-02', '2020-04-05', 3, 0000),
@@ -299,7 +298,7 @@ VALUES
 (7, 7, '2022-11-10', 0000, 'paypal'),
 (8, 8, '2022-11-10', 0000, 'cash'),
 (9, 9, '2023-03-02', 0000, 'credit card'),
-(10, 10, '2024-06-17', 0000, 'debit card');
+(10, 10, '2024-06-17', 0000, 'debit card'),
 (1, 1, '2020-02-06', 0000, 'credit card'),
 (2, 2, '2020-03-01', 0000, 'debit card'),
 (3, 3, '2021-05-08', 0000, 'paypal'),
@@ -336,4 +335,5 @@ VALUES
 (8, 8, 4, '2022-11-04', '19:00:00', 'Are pets allowed at the property?'),
 (9, 9, 4, '2023-02-28', '20:00:00', 'Is there a cleaning fee for the property?'),
 (10, 10, 3, '2024-06-08', '21:00:00', 'Can you recommend local attractions?');
+
 
