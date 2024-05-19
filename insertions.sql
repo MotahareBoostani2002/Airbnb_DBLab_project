@@ -1,6 +1,6 @@
 -- Insertion into properties table
 INSERT INTO Properties 
-(property_id, host_id, location_id, categories, property_type, num_bedrooms, num_bathrooms, max_guests, price_per_night, availability, area)
+(property_id, host_id, location_id, categories, property_type, num_bedrooms, num_bathrooms, max_guests, price_per_night, area, availability)
 VALUES 
 (1, 1, 1, 'house'       , 'Family', 3, 2, 5, 200, 1500, 1),
 (2, 3, 2, 'apartment'   , 'Budget-friendly', 2, 1, 4, 150, 900, 1),
