@@ -249,8 +249,8 @@ VALUES
 CREATE TABLE Bookings (
     booking_id INT PRIMARY KEY,
     user_id INT NOT NULL,
-    host_id INT NOT NULL,
     property_id INT NOT NULL,
+    host_id INT NOT NULL,
     booking_date DATE NOT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
@@ -262,7 +262,7 @@ CREATE TABLE Bookings (
 );
 
 -- insert into bookings table
-INSERT INTO Bookings (booking_id, user_id, host_id, property_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
+INSERT INTO Bookings (booking_id, user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
 VALUES
 (1, 1, 1, 1    , '2020-02-01', '2020-02-01', '2020-02-05', 5, 0000),
 (2, 2, 2, 3    , '2020-04-01', '2020-04-02', '2020-04-05', 3, 0000),
@@ -288,16 +288,16 @@ CREATE TABLE Payments (
 -- Insertion into payments table
 INSERT INTO Payments (payment_id, booking_id, payment_date, payment_amount, payment_method)
 VALUES
-(1, 1, '2020-02-06', 600, 'credit card'),
-(2, 2, '2020-03-01', 400, 'debit card'),
-(3, 3, '2021-05-08', 1800, 'paypal'),
-(4, 4, '2021-06-02', 300, 'cash'),
-(5, 5, '2021-12-02', 400, 'credit card'),
-(6, 6, '2022-10-10', 1500, 'debit card'),
-(7, 7, '2022-11-10', 450, 'paypal'),
-(8, 8, '2022-11-10', 300, 'cash'),
-(9, 9, '2023-03-02', 600, 'credit card'),
-(10, 10, '2024-06-17', 300, 'debit card');
+(1, 1, '2020-02-06', 0000, 'credit card'),
+(2, 2, '2020-03-01', 0000, 'debit card'),
+(3, 3, '2021-05-08', 0000, 'paypal'),
+(4, 4, '2021-06-02', 0000, 'cash'),
+(5, 5, '2021-12-02', 0000, 'credit card'),
+(6, 6, '2022-10-10', 0000, 'debit card'),
+(7, 7, '2022-11-10', 0000, 'paypal'),
+(8, 8, '2022-11-10', 0000, 'cash'),
+(9, 9, '2023-03-02', 0000, 'credit card'),
+(10, 10, '2024-06-17', 0000, 'debit card');
 
 -- Create the messages table
 CREATE TABLE Messages (
@@ -315,96 +315,13 @@ CREATE TABLE Messages (
 INSERT INTO Messages (message_id, user_id, host_id, message_date, message_time, message_text)
 VALUES
 (1, 1, 1, '2020-01-25', '12:00:00', 'Hi, I am interested in booking your property.'),
-(2, 2, 2, '2020-03-29', '13:00:00', 'Can you provide more information about the amenities?'),
-(3, 3, 3, '2021-05-01', '14:00:00', 'Is the property available for the dates?'),
-(4, 4, 4, '2021-05-27', '15:00:00', 'Can you offer a discount for a longer stay?'),
-(5, 5, 5, '2021-11-28', '16:00:00', 'I have some special requests, can you accommodate?'),
-(6, 6, 6, '2022-10-01', '17:00:00', 'What is the check-in process like?'),
-(7, 7, 7, '2022-10-24' , '18:00:00', 'Can you provide directions to the property?'),
-(8, 8, 8, '2022-11-04', '19:00:00', 'Are pets allowed at the property?'),
-(9, 9, 9, '2023-02-28', '20:00:00', 'Is there a cleaning fee for the property?'),
-(10, 10, 10, '2024-06-08', '21:00:00', 'Can you recommend local attractions?');
-
-
-
-----------------------------------------
--- Triggers
-
--- Trigger to update the availability of a property when a booking is made
-CREATE TRIGGER Update_Availability
-AFTER INSERT ON Bookings
-FOR EACH ROW
-BEGIN
-    UPDATE Properties
-    SET availability = 0
-    WHERE property_id = NEW.property_id;
-END;
-
--- Trigger to update the availability of a property when a booking is cancelled
-CREATE TRIGGER Update_Availability_Cancel
-AFTER DELETE ON Bookings
-FOR EACH ROW
-BEGIN
-    UPDATE Properties
-    SET availability = 1
-    WHERE property_id = OLD.property_id;
-END;
-
--- Trigger to update the total cost of a booking when the check-in or check-out date is changed
-CREATE TRIGGER Update_Total_Cost
-AFTER UPDATE OF check_in_date, check_out_date ON Bookings
-FOR EACH ROW
-BEGIN
-    UPDATE Bookings
-    SET total_cost = DATEDIFF(NEW.check_out_date, NEW.check_in_date) * (SELECT price_per_night FROM Properties WHERE property_id = NEW.property_id)
-    WHERE booking_id = NEW.booking_id;
-END;
-
--- Trigger when user sends a message to a host
-CREATE TRIGGER Message_Host
-AFTER INSERT ON Messages
-FOR EACH ROW
-BEGIN
-    INSERT INTO Messages
-    SET user_id = NEW.user_id,
-    host_id = NEW.host_id,
-    message_date = CURDATE(),
-    message_time = CURTIME(),
-    message_text = NEW.message_text;
-END;
-
--- Trigger when user joins the platform
-CREATE TRIGGER User_Join
-AFTER INSERT ON Users
-FOR EACH ROW
-BEGIN
-    INSERT INTO Users
-    SET user_name = NEW.user_name,
-    email = NEW.email,
-    phone_number = NEW.phone_number,
-    [password] = NEW.[password];
-END;
-
--- Trigger when user adds a property to favorites
-CREATE TRIGGER Add_Favorite
-AFTER INSERT ON User_Favorites
-FOR EACH ROW
-BEGIN
-    INSERT INTO User_Favorites
-    SET user_id = NEW.user_id,
-    property_id = NEW.property_id;
-END;
-
--- Trigger when user leaves a review
-CREATE TRIGGER Leave_Review
-AFTER INSERT ON Reviews
-FOR EACH ROW
-BEGIN
-    INSERT INTO Reviews
-    SET user_id = NEW.user_id,
-    property_id = NEW.property_id,
-    review_date = CURDATE(),
-    review_rating = NEW.review_rating,
-    review_text = NEW.review_text;
-END;
+(2, 2, 3, '2020-03-29', '13:00:00', 'Can you provide more information about the amenities?'),
+(3, 3, 2, '2021-05-01', '14:00:00', 'Is the property available for the dates?'),
+(4, 4, 5, '2021-05-27', '15:00:00', 'Can you offer a discount for a longer stay?'),
+(5, 5, 3, '2021-11-28', '16:00:00', 'I have some special requests, can you accommodate?'),
+(6, 6, 2, '2022-10-01', '17:00:00', 'What is the check-in process like?'),
+(7, 7, 2, '2022-10-24' , '18:00:00', 'Can you provide directions to the property?'),
+(8, 8, 4, '2022-11-04', '19:00:00', 'Are pets allowed at the property?'),
+(9, 9, 4, '2023-02-28', '20:00:00', 'Is there a cleaning fee for the property?'),
+(10, 10, 3, '2024-06-08', '21:00:00', 'Can you recommend local attractions?');
 
