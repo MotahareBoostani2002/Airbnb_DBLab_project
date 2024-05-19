@@ -1,18 +1,17 @@
 -- Insertion into properties table
 INSERT INTO Properties 
-(property_id, host_id, location_id, categories, property_type, num_bedrooms, num_bathrooms, max_guests, price_per_night, area, availability)
+(property_id, host_id, location_id, property_type, categories, num_bedrooms, num_bathrooms, max_guests, price_per_night, area, availability)
 VALUES 
-(1, 1, 1, 'house'       , 'Family', 3, 2, 5, 200, 1500, 1),
-(2, 3, 2, 'apartment'   , 'Budget-friendly', 2, 1, 4, 150, 900, 1),
-(3, 2, 5, 'villa'       , 'Party', 4, 2, 10, 400, 5200, 1),
-(4, 5, 4, 'guest suite' , 'Friends', 3, 2, 6, 150, 1500, 1),
-(5, 3, 1, 'apartment'   , 'Party', 2, 1, 4, 100, 1700, 1),
-(6, 2, 5, 'villa'       , 'Pet-friendly', 3, 2, 7, 300, 3500, 1),
-(7, 2, 4, 'house'       , 'Budget-friendly', 2, 2, 6, 200, 1500, 1),
-(8, 4, 1, 'cabin'       , 'Friends', 1, 1, 4, 80, 1500, 1),
-(9, 4, 2, 'treehouse'   , 'Couples', 1, 1, 2, 50, 3500, 1),
-(10, 3, 3, 'apartment'  , 'Family', 2, 1, 4, 180, 1000, 1);
-
+(1, 1, 1, 'Family'          , 'house'       , 3, 2, 5, 200, 1500, 1),
+(2, 3, 2, 'Budget-friendly' , 'apartment'   , 2, 1, 4, 150, 900, 1),
+(3, 2, 5, 'Party'           , 'villa'       , 4, 2, 10, 400, 5200, 1),
+(4, 5, 4, 'Friends'         , 'guest suite' , 3, 2, 6, 150, 1500, 1),
+(5, 3, 1, 'Party'           , 'apartment'   , 2, 1, 4, 100, 1700, 1),
+(6, 2, 5, 'Pet-friendly'    , 'villa'       , 3, 2, 7, 300, 3500, 1),
+(7, 2, 4, 'Budget-friendly' , 'house'       , 2, 2, 6, 200, 1500, 1),
+(8, 4, 1, 'Friends'         , 'cabin'       , 1, 1, 4, 80, 1500, 1),
+(9, 4, 2, 'Couples'         , 'treehouse'   , 1, 1, 2, 50, 3500, 1),
+(10, 3, 3,'Family'          ,  'apartment'  , 2, 1, 4, 180, 1000, 1);
 
 
 -- insertion into hosts table
