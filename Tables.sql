@@ -249,8 +249,8 @@ VALUES
 CREATE TABLE Bookings (
     booking_id INT PRIMARY KEY,
     user_id INT NOT NULL,
-    host_id INT NOT NULL,
     property_id INT NOT NULL,
+    host_id INT NOT NULL,
     booking_date DATE NOT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
@@ -262,7 +262,7 @@ CREATE TABLE Bookings (
 );
 
 -- insert into bookings table
-INSERT INTO Bookings (booking_id, user_id, host_id, property_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
+INSERT INTO Bookings (booking_id, user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests, total_cost)
 VALUES
 (1, 1, 1, 1    , '2020-02-01', '2020-02-01', '2020-02-05', 5, 0000),
 (2, 2, 2, 3    , '2020-04-01', '2020-04-02', '2020-04-05', 3, 0000),
@@ -288,16 +288,16 @@ CREATE TABLE Payments (
 -- Insertion into payments table
 INSERT INTO Payments (payment_id, booking_id, payment_date, payment_amount, payment_method)
 VALUES
-(1, 1, '2020-02-06', 600, 'credit card'),
-(2, 2, '2020-03-01', 400, 'debit card'),
-(3, 3, '2021-05-08', 1800, 'paypal'),
-(4, 4, '2021-06-02', 300, 'cash'),
-(5, 5, '2021-12-02', 400, 'credit card'),
-(6, 6, '2022-10-10', 1500, 'debit card'),
-(7, 7, '2022-11-10', 450, 'paypal'),
-(8, 8, '2022-11-10', 300, 'cash'),
-(9, 9, '2023-03-02', 600, 'credit card'),
-(10, 10, '2024-06-17', 300, 'debit card');
+(1, 1, '2020-02-06', 0000, 'credit card'),
+(2, 2, '2020-03-01', 0000, 'debit card'),
+(3, 3, '2021-05-08', 0000, 'paypal'),
+(4, 4, '2021-06-02', 0000, 'cash'),
+(5, 5, '2021-12-02', 0000, 'credit card'),
+(6, 6, '2022-10-10', 0000, 'debit card'),
+(7, 7, '2022-11-10', 0000, 'paypal'),
+(8, 8, '2022-11-10', 0000, 'cash'),
+(9, 9, '2023-03-02', 0000, 'credit card'),
+(10, 10, '2024-06-17', 0000, 'debit card');
 
 -- Create the messages table
 CREATE TABLE Messages (
@@ -315,15 +315,15 @@ CREATE TABLE Messages (
 INSERT INTO Messages (message_id, user_id, host_id, message_date, message_time, message_text)
 VALUES
 (1, 1, 1, '2020-01-25', '12:00:00', 'Hi, I am interested in booking your property.'),
-(2, 2, 2, '2020-03-29', '13:00:00', 'Can you provide more information about the amenities?'),
-(3, 3, 3, '2021-05-01', '14:00:00', 'Is the property available for the dates?'),
-(4, 4, 4, '2021-05-27', '15:00:00', 'Can you offer a discount for a longer stay?'),
-(5, 5, 5, '2021-11-28', '16:00:00', 'I have some special requests, can you accommodate?'),
-(6, 6, 6, '2022-10-01', '17:00:00', 'What is the check-in process like?'),
-(7, 7, 7, '2022-10-24' , '18:00:00', 'Can you provide directions to the property?'),
-(8, 8, 8, '2022-11-04', '19:00:00', 'Are pets allowed at the property?'),
-(9, 9, 9, '2023-02-28', '20:00:00', 'Is there a cleaning fee for the property?'),
-(10, 10, 10, '2024-06-08', '21:00:00', 'Can you recommend local attractions?');
+(2, 2, 3, '2020-03-29', '13:00:00', 'Can you provide more information about the amenities?'),
+(3, 3, 2, '2021-05-01', '14:00:00', 'Is the property available for the dates?'),
+(4, 4, 5, '2021-05-27', '15:00:00', 'Can you offer a discount for a longer stay?'),
+(5, 5, 3, '2021-11-28', '16:00:00', 'I have some special requests, can you accommodate?'),
+(6, 6, 2, '2022-10-01', '17:00:00', 'What is the check-in process like?'),
+(7, 7, 2, '2022-10-24' , '18:00:00', 'Can you provide directions to the property?'),
+(8, 8, 4, '2022-11-04', '19:00:00', 'Are pets allowed at the property?'),
+(9, 9, 4, '2023-02-28', '20:00:00', 'Is there a cleaning fee for the property?'),
+(10, 10, 3, '2024-06-08', '21:00:00', 'Can you recommend local attractions?');
 
 
 
