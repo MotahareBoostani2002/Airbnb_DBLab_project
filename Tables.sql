@@ -135,3 +135,83 @@ CREATE TABLE Messages (
     FOREIGN KEY (host_id) REFERENCES Hosts(host_id)
 );
 
+----------------------------------------
+-- Triggers
+
+-- Trigger to update the availability of a property when a booking is made
+CREATE TRIGGER Update_Availability
+AFTER INSERT ON Bookings
+FOR EACH ROW
+BEGIN
+    UPDATE Properties
+    SET availability = 0
+    WHERE property_id = NEW.property_id;
+END;
+
+-- Trigger to update the availability of a property when a booking is cancelled
+CREATE TRIGGER Update_Availability_Cancel
+AFTER DELETE ON Bookings
+FOR EACH ROW
+BEGIN
+    UPDATE Properties
+    SET availability = 1
+    WHERE property_id = OLD.property_id;
+END;
+
+-- Trigger to update the total cost of a booking when the check-in or check-out date is changed
+CREATE TRIGGER Update_Total_Cost
+AFTER UPDATE OF check_in_date, check_out_date ON Bookings
+FOR EACH ROW
+BEGIN
+    UPDATE Bookings
+    SET total_cost = DATEDIFF(NEW.check_out_date, NEW.check_in_date) * (SELECT price_per_night FROM Properties WHERE property_id = NEW.property_id)
+    WHERE booking_id = NEW.booking_id;
+END;
+
+-- Trigger when user sends a message to a host
+CREATE TRIGGER Message_Host
+AFTER INSERT ON Messages
+FOR EACH ROW
+BEGIN
+    INSERT INTO Messages
+    SET user_id = NEW.user_id,
+    host_id = NEW.host_id,
+    message_date = CURDATE(),
+    message_time = CURTIME(),
+    message_text = NEW.message_text;
+END;
+
+-- Trigger when user joins the platform
+CREATE TRIGGER User_Join
+AFTER INSERT ON Users
+FOR EACH ROW
+BEGIN
+    INSERT INTO Users
+    SET user_name = NEW.user_name,
+    email = NEW.email,
+    phone_number = NEW.phone_number,
+    [password] = NEW.[password];
+END;
+
+-- Trigger when user adds a property to favorites
+CREATE TRIGGER Add_Favorite
+AFTER INSERT ON User_Favorites
+FOR EACH ROW
+BEGIN
+    INSERT INTO User_Favorites
+    SET user_id = NEW.user_id,
+    property_id = NEW.property_id;
+END;
+
+-- Trigger when user leaves a review
+CREATE TRIGGER Leave_Review
+AFTER INSERT ON Reviews
+FOR EACH ROW
+BEGIN
+    INSERT INTO Reviews
+    SET user_id = NEW.user_id,
+    property_id = NEW.property_id,
+    review_date = CURDATE(),
+    review_rating = NEW.review_rating,
+    review_text = NEW.review_text;
+END;
