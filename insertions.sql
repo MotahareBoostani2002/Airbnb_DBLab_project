@@ -10,7 +10,7 @@ VALUES
 (6, 2, 5, 'villa'       , 'Pet-friendly', 3, 2, 7, 300, 3500, 1),
 (7, 2, 4, 'house'       , 'Budget-friendly', 2, 2, 6, 200, 1500, 1),
 (8, 4, 1, 'cabin'       , 'Friends', 1, 1, 4, 80, 1500, 1),
-(9, 4, 2, 'treehouse'   , 'Couple', 1, 1, 2, 50, 3500, 1),
+(9, 4, 2, 'treehouse'   , 'Couples', 1, 1, 2, 50, 3500, 1),
 (10, 3, 3, 'apartment'  , 'Family', 2, 1, 4, 180, 1000, 1);
 
 
