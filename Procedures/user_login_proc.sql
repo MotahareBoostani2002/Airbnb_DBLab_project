@@ -9,3 +9,5 @@ BEGIN
     else
     print 'Invalid email or password';
 END;
+
+EXEC User_Login 'joe@gmail.com' , 'password1';

@@ -11,3 +11,5 @@ BEGIN
     VALUES (@user_id, @property_id, @review_date, @review_rating, @review_text);
     print 'Review added successfully';
 END;
+
+EXEC Add_Review 1, 1, '2021-01-01', 5, 'Great property, would recommend to others';

@@ -9,3 +9,5 @@ BEGIN
     JOIN Amenities a ON pa.amenity_id = a.amenity_id
     WHERE a.amenity_name = @amenity_name;
 END;
+
+EXEC Filter_By_Amenities 'Wifi';

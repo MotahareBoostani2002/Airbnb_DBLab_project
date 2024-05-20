@@ -8,3 +8,5 @@ BEGIN
     FROM Properties p
     WHERE p.price_per_night BETWEEN @min_cost AND @max_cost;
 END;
+
+EXEC Filter_By_Cost 100, 200; 

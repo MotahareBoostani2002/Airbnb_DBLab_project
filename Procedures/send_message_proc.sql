@@ -11,3 +11,5 @@ BEGIN
     VALUES (@user_id, @host_id, @message_date, @message_time, @message_text);
     print 'Message sent successfully';
 END;
+
+EXEC Send_Message 1, 1, '2021-01-01', '12:00:00', 'Hi, I am interested in booking your property';

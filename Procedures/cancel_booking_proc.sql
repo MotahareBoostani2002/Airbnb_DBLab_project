@@ -7,3 +7,5 @@ BEGIN
     WHERE booking_id = @booking_id;
     print 'Booking canceled successfully';
 END;
+
+EXEC Cancel_Booking 1;

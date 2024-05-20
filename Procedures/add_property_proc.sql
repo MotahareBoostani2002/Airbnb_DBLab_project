@@ -16,3 +16,5 @@ BEGIN
     VALUES (@host_id, @location_id, @property_type, @categories, @num_bedrooms, @num_bathrooms, @max_guests, @area, @price_per_night, @availability);
     print 'Property added successfully';
 END;
+
+EXEC Add_Property 1, 1, 'Apartment', 'Luxury', 2, 2, 4, 1000, 200, 1;
