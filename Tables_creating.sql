@@ -102,7 +102,7 @@ CREATE TABLE Reviews (
 );
 
 
--- create the bookings table
+-- Create the bookings table
 CREATE TABLE Bookings (
     booking_id INT PRIMARY KEY,
     user_id INT NOT NULL,

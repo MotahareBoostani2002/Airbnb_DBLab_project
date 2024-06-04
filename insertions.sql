@@ -14,7 +14,7 @@ VALUES
 (10, 3, 3, 'apartment'   ,'Family'         , 2, 1, 4, 180, 1000, 1);
 
 
--- insertion into hosts table
+-- Insertion into hosts table
 INSERT INTO Hosts (host_id, host_name, email, phone_number, host_since, host_response_time, host_rate, host_identity_verified)
 VALUES 
 (1, 'John Doe', 'johndoe@gmail.com', '123-456-7890', '2020-01-01', 'within an hour', 4.5, 1),
@@ -97,7 +97,7 @@ VALUES
 (10, 4),(10, 2),(10, 3),(10, 8),(10, 12),(10, 14);
 
 
--- insert into users table
+-- Insertion into users table
 INSERT INTO Users (user_id, user_name, email, phone_number, [password])
 VALUES 
 (1, 'Joe', 'joe@gmail.com', '111-222-3333', 'password1'),
@@ -169,16 +169,6 @@ VALUES
 -- Insertion into payments table
 INSERT INTO Payments (payment_id, booking_id, payment_date, payment_amount, payment_method)
 VALUES
-(1, 1, '2020-02-06', 0000, 'credit card'),
-(2, 2, '2020-03-01', 0000, 'debit card'),
-(3, 3, '2021-05-08', 0000, 'paypal'),
-(4, 4, '2021-06-02', 0000, 'cash'),
-(5, 5, '2021-12-02', 0000, 'credit card'),
-(6, 6, '2022-10-10', 0000, 'debit card'),
-(7, 7, '2022-11-10', 0000, 'paypal'),
-(8, 8, '2022-11-10', 0000, 'cash'),
-(9, 9, '2023-03-02', 0000, 'credit card'),
-(10, 10, '2024-06-17', 0000, 'debit card'),
 (1, 1, '2020-02-06', 0000, 'credit card'),
 (2, 2, '2020-03-01', 0000, 'debit card'),
 (3, 3, '2021-05-08', 0000, 'paypal'),
