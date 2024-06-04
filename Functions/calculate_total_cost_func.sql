@@ -11,3 +11,6 @@ BEGIN
     WHERE p.host_id = @host_id;
     RETURN @total_cost;
 END;
+
+
+SELECT dbo.Calculate_Total_Cost(1) AS 'Total Cost for Host 1';

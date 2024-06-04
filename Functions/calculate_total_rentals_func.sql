@@ -11,3 +11,6 @@ BEGIN
     WHERE p.host_id = @host_id;
     RETURN @total_rentals;
 END;
+
+
+SELECT dbo.Calculate_Total_Rentals(1) AS 'Total Rentals for Host 1';

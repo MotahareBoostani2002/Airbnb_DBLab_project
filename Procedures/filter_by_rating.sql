@@ -4,9 +4,10 @@ CREATE PROCEDURE Filter_By_Rating
     @max_rating DECIMAL(2, 1)
 AS
 BEGIN
-    SELECT p.property_id, p.property_type, p.num_bedrooms, p.num_bathrooms, p.max_guests, p.price_per_night
+    SELECT p.property_id, p.property_type, p.num_bedrooms, p.num_bathrooms, p.max_guests, p.price_per_night,r.review_rating
     FROM Properties p
     JOIN Reviews r ON p.property_id = r.property_id
-    GROUP BY p.property_id
-    HAVING AVG(r.review_rating) BETWEEN @min_rating AND @max_rating;
+    where r.review_rating BETWEEN @min_rating AND @max_rating;
 END;
+
+exec Filter_By_Rating 3.8, 4.5;
