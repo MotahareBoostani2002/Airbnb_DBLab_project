@@ -10,4 +10,4 @@ BEGIN
 END;
 
 
-EXEC Add_To_Favorites 1, 1;
+EXEC Add_To_Favorites 1, 3;
