@@ -1,4 +1,5 @@
-CREATE FUNCTION calculate_cost (@price_per_night DECIMAL(4), @check_in_date DATE, @check_out_date DATE)
+CREATE FUNCTION calculate_cost 
+(@price_per_night DECIMAL(4), @check_in_date DATE, @check_out_date DATE)
 RETURNS DECIMAL(10)
 AS
 BEGIN

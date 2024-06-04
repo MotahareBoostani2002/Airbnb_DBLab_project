@@ -11,3 +11,5 @@ BEGIN
     WHERE l.city = @city
     AND p.availability = 1;
 END;
+
+EXEC Check_Availability 'New York', '2021-01-01', '2021-01-10'; 

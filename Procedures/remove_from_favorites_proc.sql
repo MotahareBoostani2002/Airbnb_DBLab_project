@@ -8,3 +8,5 @@ BEGIN
     WHERE user_id = @user_id AND property_id = @property_id;
     print 'Property removed from favorites';
 END;
+
+EXEC Remove_From_Favorites 1, 1;

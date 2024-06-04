@@ -7,3 +7,5 @@ BEGIN
     FROM Properties p
     WHERE p.categories = @categories;
 END;
+
+EXEC Filter_By_Categories 'Party';

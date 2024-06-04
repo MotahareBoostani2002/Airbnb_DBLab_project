@@ -8,3 +8,6 @@ BEGIN
     VALUES (@user_id, @property_id);
     print 'Property added to favorites';
 END;
+
+
+EXEC Add_To_Favorites 1, 1;

@@ -8,3 +8,5 @@ BEGIN
     VALUES (@property_id, @image_url);
     print 'Image added successfully';
 END;
+
+EXEC Add_Property_Images 1, 'https://www.example.com/image1.jpg';
