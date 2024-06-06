@@ -2,7 +2,7 @@
 
 -- Create the property table
 CREATE TABLE Properties (
-    property_id INT PRIMARY KEY,
+    property_id INT PRIMARY KEY identity(1,1),
     host_id INT NOT NULL,
     location_id INT NOT NULL,
     property_type VARCHAR(50) NOT NULL check(property_type in ('house', 'apartment', 'townhouse', 'villa', 'guest suite', 'tiny house', 'cabin', 'treehouse', 'other')),
@@ -44,7 +44,7 @@ CREATE TABLE Locations (
 
 -- Create property images table
 CREATE TABLE Property_Images (
-    image_id INT PRIMARY KEY,
+    image_id INT PRIMARY KEY identity(1,1),
     property_id INT NOT NULL,
     image_url VARCHAR(100) NOT NULL,
     FOREIGN KEY (property_id) REFERENCES Properties(property_id)
@@ -71,7 +71,7 @@ CREATE TABLE Property_Amenities (
 
 -- Create the user table
 CREATE TABLE Users (
-    user_id INT PRIMARY KEY,
+    user_id INT PRIMARY KEY identity(1,1),
     user_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE User_Favorites (
 
 -- Create the reviews table
 CREATE TABLE Reviews (
-    review_id INT PRIMARY KEY,
+    review_id INT PRIMARY KEY identity(1,1),
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     review_date DATE NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE Reviews (
 
 -- Create the bookings table
 CREATE TABLE Bookings (
-    booking_id INT PRIMARY KEY,
+    booking_id INT PRIMARY KEY identity(1,1),
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     host_id INT NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE Payments (
 
 -- Create the messages table
 CREATE TABLE Messages (
-    message_id INT PRIMARY KEY,
+    message_id INT PRIMARY KEY identity(1,1),
     user_id INT NOT NULL,
     host_id INT NOT NULL,
     message_date DATE NOT NULL,
