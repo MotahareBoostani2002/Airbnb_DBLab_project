@@ -8,6 +8,9 @@ VALUES
 ('Charlie_Anderson','Charlie','Anderson' ,'charlieanderson@gmail.com'  ,'567-890-1234' ,'charlie123' ,'2016-12-19', 'within an hour'    , 4.7, 1),
 ('David_Gilbert'   ,'David'  ,'Gilbeert' ,'davidgilbert@gmail.com'     ,'678-901-2345' ,'david123'   ,'2021-05-18', 'within a few hours', 4.1, 1);
 
+SELECT * FROM Hosts;
+
+
 -- Insertion into users table
 INSERT INTO Users ([user_name], first_name, last_name, email, phone_number, [password], birth_date)
 VALUES
@@ -22,6 +25,9 @@ VALUES
 ('Sarah_Moore'      ,'Sarah'  ,'Moore'     , 'sarah@gmail.com'  , '222-111-5555' , 'Sarahq123'  , '1980-11-11'),
 ('Rose_Jackson'     ,'Rose'   ,'Jackson'   , 'rose@gmail.com'   , '777-444-1111' , 'Rose123'    , '2001-07-12');
 
+SELECT * FROM Users;
+
+
 -- Insertion into locations table
 INSERT INTO Locations (city, street, latitude, longitude)
 VALUES 
@@ -30,6 +36,9 @@ VALUES
 ('Chicago'    , '789 Oak St'   , 41.8781, -87.6298),
 ('Houston'    , '101 Pine St'  , 29.7604, -95.3698),
 ('Hawaii'     , '202 Maple St' , 33.4484, -112.0740);
+
+SELECT * FROM Locations;
+
 
 -- Insertion into properties table
 INSERT INTO Properties 
@@ -46,6 +55,7 @@ VALUES
 (4, 2, 'treehouse'   ,'Couples'        , 1 , 1 , 2 , 50  , 3500 , 1),
 (3, 3, 'apartment'   ,'Family'         , 2 , 1 , 4 , 180 , 1000 , 1);
 
+SELECT * FROM Properties;
 
 
 -- Insertion into property images table
@@ -72,6 +82,9 @@ VALUES
 (10, 'https://example.com/image19.jpg'),
 (10, 'https://example.com/image20.jpg');
 
+SELECT * FROM Property_Images;
+
+
 -- Insertion into amenities table
 INSERT INTO Amenities (amenity_name, amenity_description)
 VALUES 
@@ -96,6 +109,9 @@ VALUES
 ('Elevator'              , 'Private or shared elevator'),
 ('Wheelchair accessible' , 'Accessible for guests with disabilities');
 
+SELECT * FROM Amenities;
+
+
 -- Insertion into property amenities table
 INSERT INTO Property_Amenities (property_id, amenity_id)
 VALUES
@@ -109,6 +125,8 @@ VALUES
 (8, 2),(8, 10),(8, 12),(8, 15),
 (9, 3),(9, 10),(9, 6),
 (10, 4),(10, 2),(10, 3),(10, 8),(10, 12),(10, 14);
+
+SELECT * FROM Property_Amenities;
 
 
 -- insert into user_favorites table
@@ -135,6 +153,9 @@ VALUES
 (10, 9),
 (10, 10);
 
+SELECT * FROM User_Favorites;
+
+
 -- insert into bookings table
 INSERT INTO Bookings (user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests) -- total_cost can be NULL
 VALUES
@@ -148,6 +169,8 @@ VALUES
 (8 , 8 , 4 , '2022-11-10' , '2022-11-11' , '2022-11-15' , 2),
 (9 , 9 , 4 , '2023-03-01' , '2023-03-04' , '2023-03-06' , 2),
 (10, 10, 3 , '2024-06-14' , '2024-06-19' , '2024-06-21' , 3);
+
+SELECT * FROM Bookings;
 
 
 -- Insertion into payments table
@@ -164,6 +187,9 @@ VALUES
 (9, '2023-03-02', 0000, 'credit card'),
 (10, '2024-06-17', 0000, 'cash');
 
+SELECT * FROM Payments;
+
+
 -- insert into reviews table
 INSERT INTO Reviews (user_id, property_id, review_date, review_rating, review_text)
 VALUES
@@ -178,8 +204,11 @@ VALUES
 (9 , 9 , '2023-03-07' , 5 , 'Great house for a family vacation.'),
 (10, 10, '2024-06-22' , 4 , 'Good apartment with a nice view.');
 
+SELECT * FROM Reviews;
+
+
 -- Insertion into messages table
-INSERT INTO Messages (user_id, host_id, message_date, message_time, message_text)
+INSERT INTO [Messages] (user_id, host_id, message_date, message_time, message_text)
 VALUES
 (1 , 1 , '2020-01-25' , '12:00:00' , 'Hi, I am interested in booking your property.'),
 (2 , 3 , '2020-03-29' , '13:00:00' , 'Can you provide more information about the amenities?'),
@@ -191,3 +220,7 @@ VALUES
 (8 , 4 , '2022-11-04' , '19:00:00' , 'Are pets allowed at the property?'),
 (9 , 4 , '2023-02-28' , '20:00:00' , 'Is there a cleaning fee for the property?'),
 (10, 3 , '2024-06-08' , '21:00:00' , 'Can you recommend local attractions?');
+
+SELECT * FROM [Messages];
+
+

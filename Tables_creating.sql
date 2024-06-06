@@ -1,3 +1,20 @@
+------------------- drop -------------------
+/*
+drop table [Messages];
+drop table Reviews;
+drop table Payments;
+drop table Bookings;
+drop table User_Favorites;
+drop table Property_Amenities;
+drop table Amenities ;
+drop table Property_Images;
+drop table Properties;
+drop table Locations;
+drop table Users;
+drop table Hosts;
+*/
+
+------------------ Create ------------------
 
 -- Create the Hosts table
 CREATE TABLE Hosts (
@@ -10,11 +27,12 @@ CREATE TABLE Hosts (
     [password] VARCHAR(50) NOT NULL,
     host_since DATE NOT NULL,
     -- derived attribute "hosting_duration" based on host_since
-    hosting_duration AS (DATEDIFF(DAY, host_since, GETDATE())),
+    hosting_duration AS (DATEDIFF(YEAR, host_since, GETDATE())),
     host_response_time VARCHAR(50) NOT NULL check(host_response_time in ('within an hour', 'within a few hours', 'within a day', 'a few days or more')),
     host_rate DECIMAL(2, 1) NOT NULL check (host_rate between 0 and 5),
     host_identity_verified BIT NOT NULL
 );
+
 
 -- Create the user table
 CREATE TABLE Users (
@@ -30,6 +48,7 @@ CREATE TABLE Users (
     age AS (DATEDIFF(YEAR, birth_date, GETDATE())),
 );
 
+
 -- Create the Locations table
 CREATE TABLE Locations (
     location_id INT PRIMARY KEY identity(1,1),
@@ -38,6 +57,7 @@ CREATE TABLE Locations (
     latitude DECIMAL(10, 8) NOT NULL,
     longitude DECIMAL(11, 8) NOT NULL
 );
+
 
 -- Create the property table
 CREATE TABLE Properties (
@@ -66,12 +86,14 @@ CREATE TABLE Property_Images (
     FOREIGN KEY (property_id) REFERENCES Properties(property_id)
 );
 
+
 -- Create the amenities table
 CREATE TABLE Amenities (
     amenity_id INT PRIMARY KEY identity(1,1),
     amenity_name VARCHAR(50) NOT NULL,
     amenity_description TEXT
 );
+
 
 -- Create the property_amenities table
 CREATE TABLE Property_Amenities (
@@ -82,6 +104,7 @@ CREATE TABLE Property_Amenities (
     FOREIGN KEY (amenity_id) REFERENCES Amenities(amenity_id)
 );
 
+
 -- Create the user_favorites table
 CREATE TABLE User_Favorites (
     user_id INT,
@@ -90,6 +113,7 @@ CREATE TABLE User_Favorites (
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (property_id) REFERENCES Properties(property_id)
 );
+
 
 -- Create the bookings table
 CREATE TABLE Bookings (
@@ -119,6 +143,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id)
 );
 
+
 -- Create the reviews table
 -- weak entity, (identifying by review_id)
 CREATE TABLE Reviews (
@@ -134,8 +159,9 @@ CREATE TABLE Reviews (
     is_recent_review AS (CASE WHEN DATEDIFF(DAY, review_date, GETDATE()) <= 30 THEN 1 ELSE 0 END)
 );
 
+
 -- Create the messages table
-CREATE TABLE Messages (
+CREATE TABLE [Messages] (
     message_id INT PRIMARY KEY identity(1,1),
     user_id INT NOT NULL,
     host_id INT NOT NULL,
@@ -145,3 +171,4 @@ CREATE TABLE Messages (
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (host_id) REFERENCES Hosts(host_id)
 );
+
