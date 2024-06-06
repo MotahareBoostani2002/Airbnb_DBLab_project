@@ -43,6 +43,7 @@ CREATE TABLE Locations (
 
 
 -- Create property images table
+-- multivalued attribute
 CREATE TABLE Property_Images (
     image_id INT PRIMARY KEY identity(1,1),
     property_id INT NOT NULL,
@@ -73,9 +74,14 @@ CREATE TABLE Property_Amenities (
 CREATE TABLE Users (
     user_id INT PRIMARY KEY identity(1,1),
     user_name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
-    [password] VARCHAR(50) NOT NULL
+    [password] VARCHAR(50) NOT NULL,
+    birth_date DATE NOT NULL,
+    -- derived attribute "age" based on birth_date
+    age AS (DATEDIFF(YEAR, birth_date, GETDATE())),
 );
 
 
@@ -90,6 +96,7 @@ CREATE TABLE User_Favorites (
 
 
 -- Create the reviews table
+-- weak entity, (identifying by review_id)
 CREATE TABLE Reviews (
     review_id INT PRIMARY KEY identity(1,1),
     user_id INT NOT NULL,
@@ -98,7 +105,9 @@ CREATE TABLE Reviews (
     review_rating INT NOT NULL,
     review_text TEXT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (property_id) REFERENCES Properties(property_id)
+    FOREIGN KEY (property_id) REFERENCES Properties(property_id),
+    -- derived attribute "is_recent_review" based on review_date
+    is_recent_review AS (CASE WHEN DATEDIFF(DAY, review_date, GETDATE()) <= 30 THEN 1 ELSE 0 END)
 );
 
 
@@ -120,6 +129,7 @@ CREATE TABLE Bookings (
 
 
 -- Create the payment table
+-- weak entity, (identifying by booking_id)
 CREATE TABLE Payments (
     payment_id INT PRIMARY KEY identity(1,1),
     booking_id INT NOT NULL,
