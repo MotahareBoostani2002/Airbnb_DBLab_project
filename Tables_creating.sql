@@ -20,7 +20,7 @@ CREATE TABLE Properties (
 
 -- Create the Hosts table
 CREATE TABLE Hosts (
-    host_id INT PRIMARY KEY,
+    host_id INT PRIMARY KEY identity(1,1),
     host_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE Hosts (
 
 -- Create the Locations table
 CREATE TABLE Locations (
-    location_id INT PRIMARY KEY,
+    location_id INT PRIMARY KEY identity(1,1),
     city VARCHAR(50) NOT NULL,
     street VARCHAR(100) NOT NULL,
     latitude DECIMAL(10, 8) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE Property_Images (
 
 -- Create the amenities table
 CREATE TABLE Amenities (
-    amenity_id INT PRIMARY KEY,
+    amenity_id INT PRIMARY KEY identity(1,1),
     amenity_name VARCHAR(50) NOT NULL,
     amenity_description TEXT
 );
@@ -121,7 +121,7 @@ CREATE TABLE Bookings (
 
 -- Create the payment table
 CREATE TABLE Payments (
-    payment_id INT PRIMARY KEY,
+    payment_id INT PRIMARY KEY identity(1,1),
     booking_id INT NOT NULL,
     payment_date DATE NOT NULL,
     payment_amount DECIMAL(10) NOT NULL,
