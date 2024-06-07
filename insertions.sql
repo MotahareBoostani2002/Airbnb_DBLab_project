@@ -129,7 +129,7 @@ VALUES
 SELECT * FROM Property_Amenities;
 
 
--- insert into user_favorites table
+-- Insertion into user_favorites table
 INSERT INTO User_Favorites (user_id, property_id)
 VALUES
 (1, 1),
@@ -156,7 +156,7 @@ VALUES
 SELECT * FROM User_Favorites;
 
 
--- insert into bookings table
+-- Insertion into bookings table
 INSERT INTO Bookings (user_id, property_id, host_id, booking_date, check_in_date, check_out_date, num_guests) -- total_cost can be NULL
 VALUES
 (1 , 1 , 1 , '2020-02-01' , '2020-02-01' , '2020-02-05' , 5),
@@ -176,21 +176,21 @@ SELECT * FROM Bookings;
 -- Insertion into payments table
 INSERT INTO Payments (booking_id, payment_date, payment_amount, payment_method)
 VALUES
-(1, '2020-02-06', 0000, 'credit card'),
-(2, '2020-03-01', 0000, 'credit card'),
-(3, '2021-05-08', 0000, 'paypal'),
-(4, '2021-06-02', 0000, 'cash'),
-(5, '2021-12-02', 0000, 'credit card'),
-(6, '2022-10-10', 0000, 'cash'),
-(7, '2022-11-10', 0000, 'paypal'),
-(8, '2022-11-10', 0000, 'cash'),
-(9, '2023-03-02', 0000, 'credit card'),
+(1,  '2020-02-06', 0000, 'credit card'),
+(2,  '2020-03-01', 0000, 'credit card'),
+(3,  '2021-05-08', 0000, 'paypal'),
+(4,  '2021-06-02', 0000, 'cash'),
+(5,  '2021-12-02', 0000, 'credit card'),
+(6,  '2022-10-10', 0000, 'cash'),
+(7,  '2022-11-10', 0000, 'paypal'),
+(8,  '2022-11-10', 0000, 'cash'),
+(9,  '2023-03-02', 0000, 'credit card'),
 (10, '2024-06-17', 0000, 'cash');
 
 SELECT * FROM Payments;
 
 
--- insert into reviews table
+-- Insertion into reviews table
 INSERT INTO Reviews (user_id, property_id, review_date, review_rating, review_text)
 VALUES
 (1 , 1 , '2020-02-08' , 5 , 'Great place to stay!'),
