@@ -1,4 +1,4 @@
--- function to calculates the total cost of a booking based on the price per night and the check-in and check-out dates.
+-- function for calculating the total cost of a booking 
 CREATE FUNCTION calculate_cost 
 (@price_per_night DECIMAL(4), @check_in_date DATE, @check_out_date DATE)
 RETURNS DECIMAL(10)
