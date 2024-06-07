@@ -72,6 +72,7 @@ CREATE TABLE Properties (
     area DECIMAL(4) NOT NULL,
     price_per_night DECIMAL(4) NOT NULL,
     [availability] BIT NOT NULL,
+    [description] TEXT,
     FOREIGN KEY (host_id) REFERENCES Hosts(host_id),
     FOREIGN KEY (location_id) REFERENCES Locations(location_id)
 );
@@ -124,6 +125,7 @@ CREATE TABLE Bookings (
     booking_date DATE NOT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
+    staying_duration AS DATEDIFF(day, check_out, check_in),
     num_guests INT NOT NULL,
     total_cost DECIMAL(10),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
