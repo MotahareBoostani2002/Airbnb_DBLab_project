@@ -12,5 +12,6 @@ BEGIN
     RETURN @total_rentals;
 END;
 
+SELECT * FROM Bookings;
 
 SELECT dbo.Calculate_Total_Rentals(1) AS 'Total Rentals for Host 1';

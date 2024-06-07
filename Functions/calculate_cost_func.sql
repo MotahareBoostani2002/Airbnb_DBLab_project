@@ -9,6 +9,4 @@ BEGIN
     RETURN @price_per_night * @total_days;
 END;
 
-
-
 SELECT dbo.calculate_cost(200, '2022-01-01', '2022-01-05') AS 'Total Cost';

@@ -12,5 +12,6 @@ BEGIN
     RETURN @total_cost;
 END;
 
+SELECT * FROM Bookings;
 
 SELECT dbo.Calculate_Total_Cost(1) AS 'Total Cost for Host 1';
