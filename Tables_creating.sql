@@ -125,7 +125,7 @@ CREATE TABLE Bookings (
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
     num_guests INT NOT NULL,
-    total_price DECIMAL(10),
+    total_cost DECIMAL(10),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (host_id) REFERENCES Hosts(host_id),
     FOREIGN KEY (property_id) REFERENCES Properties(property_id)
@@ -151,7 +151,7 @@ CREATE TABLE Reviews (
     user_id INT NOT NULL,
     property_id INT NOT NULL,
     review_date DATE NOT NULL,
-    review_rating INT NOT NULL,
+    review_rating DECIMAL(2,1) NOT NULL,
     review_text TEXT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (property_id) REFERENCES Properties(property_id),

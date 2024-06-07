@@ -14,4 +14,6 @@ BEGIN
     print 'Image added successfully';
 END;
 
-EXEC Add_Property_Images 1, 'https://www.example.com/image1.jpg';
+EXEC Add_Property_Images 1, 'https://example.com/image1_new.jpg';
+
+SELECT * FROM Property_Images;

@@ -9,4 +9,9 @@ BEGIN
     print 'Property removed from favorites';
 END;
 
+SELECT * FROM User_Favorites;
+
 EXEC Remove_From_Favorites 1, 1;
+
+SELECT * FROM User_Favorites;
+

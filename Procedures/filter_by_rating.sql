@@ -4,10 +4,14 @@ CREATE PROCEDURE Filter_By_Rating
     @max_rating DECIMAL(2, 1)
 AS
 BEGIN
-    SELECT p.property_id, p.property_type, p.num_bedrooms, p.num_bathrooms, p.max_guests, p.price_per_night,r.review_rating
+    SELECT r.property_id, CAST(AVG(r.review_rating) AS DECIMAL(2,1)) as average_score
     FROM Properties p
     JOIN Reviews r ON p.property_id = r.property_id
-    where r.review_rating BETWEEN @min_rating AND @max_rating;
+    GROUP BY r.property_id
+    HAVING CAST(AVG(r.review_rating) AS DECIMAL(2,1)) BETWEEN @min_rating AND @max_rating;
 END;
 
-exec Filter_By_Rating 3.8, 4.5;
+SELECT * FROM Reviews;
+
+EXEC Filter_By_Rating 1,5;
+

@@ -12,4 +12,6 @@ BEGIN
     print 'Review added successfully';
 END;
 
-EXEC Add_Review 1, 1, '2021-01-01', 5, 'Great property, would recommend to others';
+EXEC Add_Review 1, 1, '2024-06-1', 5, 'Great property, would recommend to others';
+
+SELECT * FROM Reviews;

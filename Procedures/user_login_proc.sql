@@ -10,4 +10,8 @@ BEGIN
     print 'Invalid email or password';
 END;
 
-EXEC User_Login 'joe@gmail.com' , 'password1';
+select * from Users
+
+EXEC User_Login 'joe@gmail.com' , 'joe123';
+
+EXEC User_Login 'joe@gmail.com' , 'jack123';

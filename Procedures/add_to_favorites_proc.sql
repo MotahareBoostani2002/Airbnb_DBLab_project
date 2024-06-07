@@ -11,3 +11,5 @@ END;
 
 
 EXEC Add_To_Favorites 1, 3;
+
+SELECT * FROM User_Favorites;

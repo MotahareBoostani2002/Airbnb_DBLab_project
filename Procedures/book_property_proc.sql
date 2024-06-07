@@ -16,3 +16,5 @@ BEGIN
 END;
 
 EXEC Book_Property 1, 1, 1, '2021-01-01', '2021-01-10', '2021-01-20', 4, 200;
+
+SELECT * FROM Bookings;

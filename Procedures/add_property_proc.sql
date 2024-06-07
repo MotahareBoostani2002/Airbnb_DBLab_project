@@ -17,4 +17,6 @@ BEGIN
     print 'Property added successfully';
 END;
 
-EXEC Add_Property 1, 1, 'Apartment', 'Luxury', 2, 2, 4, 1000, 200, 1;
+EXEC Add_Property 1, 1, 'Apartment', 'Budget-friendly', 2, 2, 4, 1000, 200, 1;
+
+SELECT * FROM Properties;
